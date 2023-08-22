@@ -10,7 +10,7 @@ import Loader from "@/components/Loader";
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -31,13 +31,13 @@ export default function Home() {
     };
   }, []);
 
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 3000);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
 
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -60,7 +60,7 @@ export default function Home() {
 
           <div className="md:hidden">
             <button
-              className="text-black"
+              className="text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <svg
