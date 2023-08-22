@@ -113,10 +113,10 @@ export default function Home() {
           <img className="md:w-96 md:h-96 md:ml-28" src="/main.jpeg" />
         </div>
         <div className="md:w-1/2 px-4 py-2">
-          <h2 className="text-[#01BE62] text-5xl font-bold underline mt-4 md:mt-0">
+          <h2 className="text-[#01BE62] md:text-5xl text-xl font-bold underline mt-4 md:mt-0">
             Earth Token
           </h2>
-          <p className="p-4 pt-8 text-xl">
+          <p className="p-4 md:pt-8 text-xl">
             Earth Token is a revolutionary crypto project aimed at promoting
             environmental sustainability and global conservation efforts. Built
             on a blockchain platform, Earth Token seeks to create a
@@ -156,14 +156,14 @@ export default function Home() {
             </h2>
             <p className="text-gray-600">
               {" "}
-              Earth Token's staking program empowers users to make a tangible
-              difference in global conservation efforts. By staking Earth
-              Tokens, participants lock in their commitment to the project's
-              environmental mission while earning rewards. This innovative
-              system not only supports the platform's security but also
-              encourages long-term engagement, fostering a community dedicated
-              to preserving the planet's resources through blockchain
-              technology.
+              Earth Token is a revolutionary crypto project aimed at promoting
+            environmental sustainability and global conservation efforts. Built
+            on a blockchain platform, Earth Token seeks to create a
+            decentralized ecosystem where individuals and organizations can
+            contribute to preserving the planet's natural resources. Through the
+            innovative use of smart contracts, Earth Token empowers participants
+            to support and fund initiatives related to renewable energy,
+            reforestation, wildlife preservation, and more.
             </p>
           </div>
         </div>
@@ -176,7 +176,7 @@ export default function Home() {
           </p>
         </div>
         <div className="bg-[#01BE62] rounded-lg flex justify-start flex-col items-center p-4 md:w-2/5 shadow-md m-2">
-          <p className="text-3xl font-bold text-white">Coin Launch on </p>
+          <p className="text-3xl font-bold text-white">Listing Network </p>
           <p className="p-1 italic font-bold text-white">Earth Token is listed on Arbitrum Chain.</p>
           {/* <p>
             Arbitrum is a layer 2 scaling solution for Ethereum, designed to
