@@ -27,15 +27,21 @@ const TeamSection = () => {
       link: 'https://dx.app/', // Replace with actual image path
     },
     {
+      name: 'ARB',
+      image: 'https://pbs.twimg.com/profile_images/1653532864309239810/ZjT_zBAS_400x400.png', // Replace with actual image path
+      link: '',
+    },
+    {
+      name: 'Coinbase',
+      image: 'https://images.ctfassets.net/c5bd0wqjc7v0/3dFdY6GvgLgCIXmBiN6eiA/d4acc5d4c5d557566cf0e46f9b58de43/icon-buy-and-sell.svg', // Replace with actual image path
+      link: '',
+    },
+    {
       name: 'BNB Chain',
       image: 'https://th.bing.com/th/id/OIP.1wTTp6-XPR-g6PS8D8ZAqAHaDt?pid=ImgDet&rs=1',
       link: '', // Replace with actual image path
     },
-    {
-        name: 'Coinbase',
-        image: 'https://images.ctfassets.net/c5bd0wqjc7v0/3dFdY6GvgLgCIXmBiN6eiA/d4acc5d4c5d557566cf0e46f9b58de43/icon-buy-and-sell.svg', // Replace with actual image path
-        link: '',
-      },
+    
       {
         name: 'Chain Link',
         image: 'https://th.bing.com/th/id/OIP.mleb5_jAlRxR3Yj8Zksc2gHaHa?pid=ImgDet&rs=1', // Replace with actual image path
@@ -46,11 +52,7 @@ const TeamSection = () => {
         image: 'https://th.bing.com/th/id/R.95bf06d513ed7ae2ea7ee2457a8daf91?rik=IfsTHJ7lZxWswQ&pid=ImgRaw&r=0', // Replace with actual image path
         link: '',
       },
-      {
-        name: 'ARB',
-        image: 'https://pbs.twimg.com/profile_images/1653532864309239810/ZjT_zBAS_400x400.png', // Replace with actual image path
-        link: '',
-      },
+     
     // Add more team members
   ];
 

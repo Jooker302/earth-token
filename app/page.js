@@ -191,8 +191,8 @@ export default function Home() {
       
       <TeamSection />
 
-      <footer className="bg-gray-800 py-4 text-center font-bold text-white">
-        <p>Listed on Binance Smart Chain</p>
+      <footer className="bg-[#01BE62] py-4 text-center font-bold text-white">
+        <p>Listed on Arbitrum Chain</p>
       </footer>
     </>
   );
