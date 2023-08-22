@@ -1,113 +1,199 @@
-import Image from 'next/image'
+"use client";
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
+import FeaturesSection from "@/components/FeaturesSection";
+import TeamSection from "@/components/TeamSection";
+import Loader from "@/components/Loader";
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isLoading, setIsLoading] = useState(true);
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const aboutSection = document.getElementById("about-section");
+
+    if (aboutSection) {
+      const rect = aboutSection.getBoundingClientRect();
+      setIsVisible(rect.top < window.innerHeight / 2);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 3000);
+
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className="relative bg-[#01BE62]">
+        <div className="flex justify-between items-center p-4">
+          <div className="flex items-center space-x-4">
+            <img src="main.jpeg" alt="Logo" className="h-8 w-8 rounded-full" />
+          </div>
+          <nav className="hidden md:flex flex-grow justify-center space-x-4">
+            <a href="#" className="text-white">
+              Home
+            </a>
+            <a href="#about-section" className="text-white">
+              About
+            </a>
+            <a href="#team-section" className="text-white">
+              Team
+            </a>
+          </nav>
+
+          <div className="md:hidden">
+            <button
+              className="text-black"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <nav
+          className={`${
+            mobileMenuOpen ? "block" : "hidden"
+          } absolute top-full left-0 right-0 bg-[#01BE62] md:hidden transition-all duration-300`}
+        >
+          <div className="p-4 space-y-2">
+            <a href="#" className="block text-white">
+              Home
+            </a>
+            <a href="#about-section" className="block text-white">
+              About
+            </a>
+            <a href="#team-section" className="block text-white">
+              Team
+            </a>
+            <a href="https://t.me/earthtoken98" className="block text-white">
+              Telegram
+            </a>
+            <a
+              href="https://twitter.com/TokenEarth91?t=Mt-HZMcPOIuSNsTdP0Un2Q&s=09"
+              className="block text-white"
+            >
+              Twitter
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      <div id="intro" className="flex bg-gray-100 justify-between p-4 flex-wrap">
+        <div className="md:w-1/2">
+          <img className="md:w-96 md:h-96 md:ml-28" src="/main.jpeg" />
+        </div>
+        <div className="md:w-1/2 px-4 py-2">
+          <h2 className="text-black text-5xl font-bold underline mt-4 md:mt-0">
+            Earth Token
+          </h2>
+          <p className="p-4 pt-8 text-xl">
+            Earth Token is a revolutionary crypto project aimed at promoting
+            environmental sustainability and global conservation efforts. Built
+            on a blockchain platform, Earth Token seeks to create a
+            decentralized ecosystem where individuals and organizations can
+            contribute to preserving the planet's natural resources. Through the
+            innovative use of smart contracts, Earth Token empowers participants
+            to support and fund initiatives related to renewable energy,
+            reforestation, wildlife preservation, and more.
+          </p>
+          {/* <div className="flex justify-center my-3">
+            <a href="#about" className="px-4 py-2 cursor-pointer bg-[#DE7596] text-white hover:bg-[#D1668A] rounded-lg">
+              About Us
+            </a>
+          </div> */}
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <FeaturesSection />
+
+      <section
+        id="about-section"
+        className={`bg-gray-100 py-12 px-4 md:px-0 ${
+          isVisible ? "slide-in active" : "slide-in"
+        }`}
+      >
+        <div className="container mx-auto flex flex-col md:flex-row items-center md:justify-between">
+          <div className="md:w-1/2 mb-6 md:mb-0 md:px-4">
+            <img
+              src="/cover.jpeg"
+              alt="About"
+              className="w-full rounded-lg shadow-lg  md:w-full md:max-w-full"
+            />
+          </div>
+          <div className="md:w-1/2 md:pl-4">
+            <h2 className="text-2xl font-bold text-[#01BE62] mb-4">
+              About Earth Token
+            </h2>
+            <p className="text-gray-600">
+              {" "}
+              Earth Token's staking program empowers users to make a tangible
+              difference in global conservation efforts. By staking Earth
+              Tokens, participants lock in their commitment to the project's
+              environmental mission while earning rewards. This innovative
+              system not only supports the platform's security but also
+              encourages long-term engagement, fostering a community dedicated
+              to preserving the planet's resources through blockchain
+              technology.
+            </p>
+          </div>
+        </div>
+
+        <div id="about" className="p-6 flex justify-center flex-wrap">
+        <div className="bg-[#01BE62] rounded-lg flex justify-center flex-col items-center shadow-md m-2 p-4 md:w-2/5">
+          <p className="text-3xl font-bold text-white">Fairlaunch on </p>
+          <p className="p-1 italic font-bold text-white">
+            Earth Token will Fairlaunch on 31st August
+          </p>
+        </div>
+        <div className="bg-[#01BE62] rounded-lg flex justify-start flex-col items-center p-4 md:w-2/5 shadow-md m-2">
+          <p className="text-3xl font-bold text-white">Coin Launch on </p>
+          <p className="p-1 italic font-bold text-white">Earth Token is listed on Arbitrum Chain.</p>
+          {/* <p>
+            Arbitrum is a layer 2 scaling solution for Ethereum, designed to
+            improve scalability and reduce transaction fees. It aims to enhance
+            the Ethereum ecosystem by enabling faster and more cost-efficient
+            smart contract execution
+          </p> */}
+        </div>
       </div>
+      </section>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      
+      <TeamSection />
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      <footer className="bg-gray-800 py-4 text-center font-bold text-white">
+        <p>Listed on Binance Smart Chain</p>
+      </footer>
+    </>
+  );
 }
