@@ -113,7 +113,7 @@ export default function Home() {
           <img className="md:w-96 md:h-96 md:ml-28" src="/main.jpeg" />
         </div>
         <div className="md:w-1/2 px-4 py-2">
-          <h2 className="text-black text-5xl font-bold underline mt-4 md:mt-0">
+          <h2 className="text-[#01BE62] text-5xl font-bold underline mt-4 md:mt-0">
             Earth Token
           </h2>
           <p className="p-4 pt-8 text-xl">
